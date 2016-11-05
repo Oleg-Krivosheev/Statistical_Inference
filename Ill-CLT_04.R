@@ -6,7 +6,7 @@ set.seed(12345)
 n <- 100
 
 # number of simulation
-nosim <- 1000
+nosim <- 10000
 
 # expected Cauchy mean/variance
 mu <- 0.0

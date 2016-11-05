@@ -33,4 +33,7 @@ g <- g + geom_vline(xintercept = 0.34, colour="red", size=1)
 print(g)
 
 ## p-value of gaussian
+
+pnorm(0.34, mean = mean(m), sd=sd(m))
+
 2*pnorm(0.34, mean = mean(m), sd=sd(m))
