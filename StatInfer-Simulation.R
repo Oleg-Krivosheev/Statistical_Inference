@@ -17,21 +17,27 @@ colnames(p2) <- c("Estimated","Theoretical")
 p2
 
 ## Show that the distribution is approximately normal
-data(aggdata_health_top10_fatal)
-ggplot(data=p,aes(y=INJURIES,x=EVTYPE))+geom_bar(size=1,colour="black",fill="red",stat="identity")+labs(list(x="Event",y="Injuries"))
-g <- ggplot(aggdata_health_top10_fatal, aes(aggdata_health_top10_fatal$event_type, aggdata_health_top10_fatal$fatalities))
+#data(aggdata_health_top10_fatal)
+#ggplot(data=p,aes(y=INJURIES,x=EVTYPE))+geom_bar(size=1,colour="black",fill="red",stat="identity")+labs(list(x="Event",y="Injuries"))
+#g <- ggplot(aggdata_health_top10_fatal, aes(aggdata_health_top10_fatal$event_type, aggdata_health_top10_fatal$fatalities))
 
 # Overlays a normal distribution over the density plot to show the normal approximation.
-g + stat_function(fun=dnorm, args=list(mean=5, sd=est.sd),color = "darkblue", size = 1.5)
+#g + stat_function(fun=dnorm, args=list(mean=5, sd=est.sd),color = "darkblue", size = 1.5)
 
 rng.min<-NULL; rng.max<-NULL
 for(i in 1:nosim){
         rng.min[i]<-mean(st[,i])-1.96*sd(st[,i])/sqrt(n)
         rng.max[i]<-mean(st[,i])+1.96*sd(st[,i])/sqrt(n)
 }
-p$min<-rng.min; p$max<-rng.max; j <- 0
-for (i in 1:nosim){
-        if (5 > p$min[i] & 5 < p$max[i]){j <- j + 1}
+
+p$min<-rng.min
+p$max<-rng.max
+
+j <- 0
+for (i in 1:nosim) {
+    if (5 > p$min[i] & 5 < p$max[i]) {
+        j <- j + 1
+    }
 }
 
 coverage <- j/nosim
