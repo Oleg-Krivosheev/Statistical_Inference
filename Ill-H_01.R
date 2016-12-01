@@ -7,5 +7,6 @@ p + geom_point()
 
 q <- t.test(father.son$sheight - father.son$fheight)
 p <- t.test(father.son$sheight, father.son$fheight, paired = TRUE)
+
 print(q)
 print(p)

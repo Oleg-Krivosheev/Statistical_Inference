@@ -84,9 +84,12 @@ names(wideCW)[-(1 : 2)] <- paste("time", names(wideCW)[-(1 : 2)], sep = "")
 
 wideCW <- mutate(wideCW, gain = time21 - time0)
 
-wideCW14 <- subset(wideCW, Diet %in% c(1, 4))
+wideCW14 <- subset(wideCW, Diet %in% c(1, 3))
 
 rbind(
     t.test(gain ~ Diet, paired = FALSE, var.equal = TRUE, data = wideCW14)$conf,
     t.test(gain ~ Diet, paired = FALSE, var.equal = FALSE, data = wideCW14)$conf
 )
+
+q <- t.test(gain ~ Diet, paired = FALSE, var.equal = TRUE, data = wideCW14)
+print(q)
